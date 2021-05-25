@@ -22,9 +22,10 @@ class ScenarryoBackApplicationTests {
 	@Test
 	void contextLoads() {
 		// Test add a movie in BDD
-		Movie hp1 = new Movie("Harry Potter 1", LocalDate.of(2019,05,28), AgeEnum.M_16 , "Un jeune puceau voit un gros porc avec une barbe débarqué pendant ses vacances dans un phare avec sa super famille pour lui dire qu'il a aucun avenir . Fin de l'histoire", 120, "C:\\Users\\ib\\Desktop\\Dossier de la honte\\Montages\\Pounaud.JPG"  );
-		Movie hp2 = new Movie("Harry Potter 2", LocalDate.of(2019,05,28), AgeEnum.M_16 , "Normalement y'a plsu d'histoire", 120, "C:\\Users\\ib\\Desktop\\Dossier de la honte\\Montages\\Pounaud.JPG"  );
-		Movie hp3 = new Movie("Harry Potter 3", LocalDate.of(2019,05,28), AgeEnum.M_16 , "es dans un phare avec sa super famille pour lui dire qu'il a aucun avenir . Fin de l'histoire", 120, "C:\\Users\\ib\\Desktop\\Dossier de la honte\\Montages\\Pounaud.JPG"  );
+		Movie hp1 = new Movie ("Harry Potter à l'école des sorciers", "Chris Columbus", LocalDate.of(2001,12,05), AgeEnum.TOUS_PUBLIC, "Orphelin, Harry Potter ...","02:32:00", "https://img.over-blog-kiwi.com/1/88/59/62/20160508/ob_1a62f7_affiche.jpg");
+		Movie hp2 = new Movie ("Harry Potter et la chambre des secrets", "Chris Columbus", LocalDate.of(2002,12,04), AgeEnum.TOUS_PUBLIC, "Alors que l'oncle Vernon ...", "02:30:00", "https://static.fnac-static.com/multimedia/images_produits/ZoomPE/2/9/6/3322069866692/tsp20110629153819/Harry-Potter-et-la-chambre-des-secrets-Edition-Simple-DVD.jpg");
+		Movie hp3 = new Movie ("Harry Potter et le prisonnier d'Azkaban", "Alfonso Cuarón", LocalDate.of(2004,06,02), AgeEnum.TOUS_PUBLIC, "Sirius Black, un dangereux ...", "02:20:00", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT6Hqol6TnghN9xWTkXYuMu5GzHJQcSKwZ6ZWQuBD0FjKqMotM");
+
 		
 		movieService.addMovie(hp1);
 		movieService.addMovie(hp2);
@@ -37,9 +38,7 @@ class ScenarryoBackApplicationTests {
 		System.out.println(movieService.getAllMovies());
 		System.out.println("fin");
 		
-		
-		
-		
+	
 		
 		
 	}

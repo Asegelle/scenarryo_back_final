@@ -26,8 +26,8 @@ public class MovieController {
 	@PostConstruct
 	@Transactional
 	public void init() {
-		movieService.addMovie(new Movie("José", LocalDate.parse("2008-05-18"), AgeEnum.M_16, "test", 208, "url"));
-		movieService.addMovie(new Movie("Rosé", LocalDate.parse("2008-05-18"), AgeEnum.M_16, "test2", 208, "url"));
+		//movieService.addMovie(new Movie("José", LocalDate.parse("2008-05-18"), AgeEnum.M_16, "test", 208, "url"));
+		//movieService.addMovie(new Movie("Rosé", LocalDate.parse("2008-05-18"), AgeEnum.M_16, "test2", 208, "url"));
 		
 		movieService.getAllMovies();
 	}
