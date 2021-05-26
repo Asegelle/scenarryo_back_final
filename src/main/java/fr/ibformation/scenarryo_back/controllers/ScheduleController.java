@@ -20,7 +20,7 @@ public class ScheduleController {
 	
     // ------------------------- get --------------------------
 
-	@GetMapping("/schedule")
+	@GetMapping("/admin/schedule")
 	public List<Schedule> getAllSchedules() {
 		return scheduleService.displayAllSchedules();
 	}

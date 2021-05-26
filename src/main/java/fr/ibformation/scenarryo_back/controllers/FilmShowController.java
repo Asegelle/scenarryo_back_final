@@ -19,7 +19,7 @@ public class FilmShowController {
 	
     // ------------------------- get --------------------------
 
-	@GetMapping("/film-show")
+	@GetMapping("/admin/film-show")
 	public List<FilmShow> getAllFilmShowes() {
 		return filmShowService.displayAllFilmShowes();
 	}

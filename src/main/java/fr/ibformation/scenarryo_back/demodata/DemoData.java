@@ -9,7 +9,10 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import fr.ibformation.scenarryo_back.beans.Movie;
+import fr.ibformation.scenarryo_back.beans.Schedule;
+import fr.ibformation.scenarryo_back.dao.FilmShowDAO;
 import fr.ibformation.scenarryo_back.dao.MovieDAO;
+import fr.ibformation.scenarryo_back.dao.ScheduleDAO;
 import fr.ibformation.scenarryo_back.enums.AgeEnum;
 
 
@@ -23,11 +26,12 @@ public class DemoData {
 	/*
 	@Autowired
 	private RoomDAO roomDAO;
+	*/
 	@Autowired
 	private ScheduleDAO scheduleDAO;
 	@Autowired
 	private FilmShowDAO filmShowDAO;
-	*/
+	
 	
 	@EventListener
 	public void appReady (ApplicationReadyEvent event) {
@@ -37,7 +41,7 @@ public class DemoData {
 		roomDAO.save(new Room (3, 1000));
 		roomDAO.save(new Room (4, 200));
 		roomDAO.save(new Room (5, 1000));
-		
+		*/
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 25), "10:00", "12:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 25), "12:00", "14:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 25), "14:00", "16:00" ));
@@ -56,7 +60,7 @@ public class DemoData {
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "16:00", "18:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "18:00", "20:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "20:00", "22:00" ));
-		*/
+		
 		
 		movieDAO.save(new Movie ("Harry Potter à l'école des sorciers", "Chris Columbus", LocalDate.of(2001,12,05), AgeEnum.TOUS_PUBLIC, "Orphelin, Harry Potter a été recueilli à contrecœur par son oncle Vernon et sa tante Pétunia, aussi cruels que mesquins, qui n'hésitent pas à le faire dormir dans le placard sous l'escalier. Constamment maltraité, il doit en outre supporter les jérémiades de son cousin Dudley, garçon cupide et archi-gâté par ses parents. De leur côté, Vernon et Pétunia détestent leur neveu dont la présence leur rappelle sans cesse le tempérament \"imprévisible\" des parents du garçon et leur mort mystérieuse.\r\n"
 				+ "À l'approche de ses 11 ans, Harry ne s'attend à rien de particulier – ni carte, ni cadeau, ni même un goûter d'anniversaire. Et pourtant, c'est à cette occasion qu'il découvre qu'il est le fils de deux puissants magiciens et qu'il possède lui aussi d'extraordinaires pouvoirs. Quand on lui propose d'intégrer Poudlard, la prestigieuse école de sorcellerie, il trouve enfin le foyer et la famille qui lui ont toujours manqué… et s'engage dans l'aventure de sa vie.", 
