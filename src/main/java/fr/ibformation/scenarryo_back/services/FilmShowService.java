@@ -8,4 +8,9 @@ public interface FilmShowService {
 
 	public List<FilmShow> displayAllFilmShowes();
 	
+	public void deleteById(int id);
+
+	public FilmShow createShow(FilmShow filmShow);
+
+	
 }
