@@ -8,4 +8,10 @@ public interface ScheduleService {
 
 	public List<Schedule> displayAllSchedules();
 
+	public void deleteScheduleById(int id);
+
+	public Schedule addSchedule(Schedule schedule);
+
+	public Schedule updateSchedule(int id);
+
 }

@@ -21,4 +21,19 @@ public class FilmShowServiceImpl implements FilmShowService {
 		return (List<FilmShow>) filmShowDAO.findAll();
 	}
 
+
+	@Override
+	public void deleteById(int id) {
+		filmShowDAO.deleteById(id);
+		
+	}
+
+
+	@Override
+	public FilmShow createShow(FilmShow filmShow) {
+		System.out.println("--------- service create filmShow ---------");
+		System.out.println(filmShow);
+		return filmShowDAO.save(filmShow);
+	}
+
 }
