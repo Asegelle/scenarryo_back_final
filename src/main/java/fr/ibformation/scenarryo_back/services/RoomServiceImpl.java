@@ -20,4 +20,15 @@ public class RoomServiceImpl implements RoomService {
 		return (List<Room>) roomDAO.findAll();
 	}
 
+	@Override
+	public void deleteRoom(int i) {
+		roomDAO.deleteById(i);
+	}
+
+	@Override
+	public void addRoom(Room room) {
+		roomDAO.save(room);
+		
+	}
+
 }
