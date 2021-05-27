@@ -40,7 +40,7 @@ public class Schedule {
 	private String endingHour;
 
 	@OneToMany (mappedBy="showSchedule")
-	private List<FilmShow> scheduleShow = new ArrayList<>();
+	private List<FilmShow> filmShow = new ArrayList<>();
 	
 	
 

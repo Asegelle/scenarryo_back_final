@@ -19,7 +19,7 @@ public class RoomController {
 	RoomService roomService;
 	
 	
-	@GetMapping("/room/get-all")
+	@GetMapping("/admin/room")
 	public List<Room> getAllRooms(){
 		
 		return roomService.getAllRooms();
