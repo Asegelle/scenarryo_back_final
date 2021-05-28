@@ -50,16 +50,20 @@ public class DemoData {
 		roomDAO.save(new Room(5, 1000));
 		
 		
-		Schedule schedule1 = new Schedule(LocalDate.of(2021, 5, 25), "10:00", "12:00" );
+		Schedule schedule1 = new Schedule(LocalDate.of(2021, 5, 28), "10:00", "12:00" );
+		Schedule schedule2 = new Schedule(LocalDate.of(2021, 5, 28), "12:00", "14:00" );
+		Schedule schedule3 = new Schedule(LocalDate.of(2021, 5, 28), "14:00", "16:00" );
+		Schedule schedule4 = new Schedule(LocalDate.of(2021, 5, 29), "10:00", "12:00" );
+		Schedule schedule5 = new Schedule(LocalDate.of(2021, 5, 29), "14:00", "16:00" );
 		scheduleDAO.save(schedule1);
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 25), "12:00", "14:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 25), "14:00", "16:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 25), "16:00", "18:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 26), "18:00", "20:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 26), "20:00", "22:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 27), "10:00", "12:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 27), "12:00", "14:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 27), "14:00", "16:00" ));
+		scheduleDAO.save(schedule2);
+		scheduleDAO.save(schedule3);
+		scheduleDAO.save(schedule4);
+		scheduleDAO.save(schedule5);
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 29), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 30), "10:00", "12:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 30), "12:00", "14:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 30), "14:00", "16:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 28), "16:00", "18:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 28), "18:00", "20:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 29), "20:00", "22:00" ));
@@ -96,8 +100,10 @@ public class DemoData {
 		
 		//showDAO.save(new Show(7, 0, new Room (6, 600),new Schedule (LocalDate.of(2021, 5, 16), "22:00", "24:00"),new Movie ("HP", "Alex", LocalDate.of(1991,01,29), Age.M_18, "synopsis test.", "02:10:00", "https://www.legaliondesetoiles.com/photo/art/grande/3337709-4790710.jpg?v=1520758687")));
 		filmShowDAO.save(new FilmShow(7, 67, room1, schedule1, movie1));
-		filmShowDAO.save(new FilmShow(9, 6, room1, schedule1, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule1, movie1));
+		filmShowDAO.save(new FilmShow(9, 6, room1, schedule2, movie1));
+		filmShowDAO.save(new FilmShow(7, 16, room1, schedule3, movie1));
+		filmShowDAO.save(new FilmShow(7, 16, room1, schedule4, movie1));
+		filmShowDAO.save(new FilmShow(7, 16, room1, schedule5, movie1));
 //		FilmShow(int priceTicket, int bookedSeats, Room showRoom, Schedule showSchedule, Movie showMovie)
 	}
 	

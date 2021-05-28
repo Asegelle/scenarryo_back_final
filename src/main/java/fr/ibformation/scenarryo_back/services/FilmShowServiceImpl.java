@@ -36,4 +36,14 @@ public class FilmShowServiceImpl implements FilmShowService {
 		return filmShowDAO.save(filmShow);
 	}
 
+
+	@Override
+	public void bookASeat(int id, int newBookedSeats) {
+
+		filmShowDAO.updateBookedSeats(id, newBookedSeats);
+	}
+
+
+	
+
 }

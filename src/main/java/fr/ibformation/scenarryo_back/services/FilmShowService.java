@@ -12,5 +12,7 @@ public interface FilmShowService {
 
 	public FilmShow createShow(FilmShow filmShow);
 
+	public void bookASeat(int i, int j);
+
 	
 }

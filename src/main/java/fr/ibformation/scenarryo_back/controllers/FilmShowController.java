@@ -2,9 +2,13 @@ package fr.ibformation.scenarryo_back.controllers;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,4 +32,16 @@ public class FilmShowController {
 		return filmShowService.displayAllFilmShowes();
 	}
 	
+	@Transactional
+	@PutMapping("/book-seat")
+	public FilmShow bookASeat(@RequestBody FilmShow filmShow) {
+		
+		filmShowService.bookASeat(filmShow.getId(), filmShow.getBookedSeats()+1);
+		filmShow.setBookedSeats(filmShow.getBookedSeats() + 1);
+		return filmShow;
+	}
+	
 }
+
+
+
