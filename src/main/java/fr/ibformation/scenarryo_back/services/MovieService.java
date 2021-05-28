@@ -10,4 +10,6 @@ public interface MovieService {
 	public void addMovie(Movie movie); 
 	
 	public List<Movie> getAllMovies();
+
+	public Movie getMovieById(int id);
 }

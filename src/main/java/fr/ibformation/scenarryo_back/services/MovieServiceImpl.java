@@ -31,4 +31,9 @@ public class MovieServiceImpl implements MovieService {
 		
 	}
 
+	@Override
+	public Movie getMovieById(int id) {
+		return movieDAO.findById(id).orElse(null);	
+		}
+
 }

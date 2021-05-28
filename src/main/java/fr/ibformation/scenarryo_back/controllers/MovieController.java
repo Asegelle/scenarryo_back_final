@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,6 +37,13 @@ public class MovieController {
 	public List<Movie> getAllMovies() {
 		return movieService.getAllMovies();
 	}
+	
+	
+	@GetMapping("/rest/{id}")
+	public Movie getMovieById(@PathVariable("id") int id) {
+		return movieService.getMovieById(id);
+	}
+	
 	
 	@PostMapping("/rest")
 	public List<Movie> getAllMoviesAngular() {
