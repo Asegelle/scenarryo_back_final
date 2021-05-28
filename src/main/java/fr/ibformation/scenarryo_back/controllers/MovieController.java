@@ -39,13 +39,22 @@ public class MovieController {
 	@PostMapping("/movie")
 	@Transactional // A ajouter lorsqu'on modifie qqc en BDD
 	public void addMovie(@RequestBody Movie movie) {
+		System.out.println("------------------------" + movie);
 		movieService.addMovie(movie);
 
 	}
-
-	@GetMapping("/movie")
-	public Movie getMovieByTitle() {
-		return (Movie) movieService.getAllMovies();
-	}
+	
+//	//add movie by admin
+//	@PostMapping("/addmovie")
+//	@Transactional // A ajouter lorsqu'on modifie qqc en BDD
+//	public void addMovieAdmin(@RequestBody Movie movie) {
+//		movieService.addMovie(movie);
+//
+//	}
+// TODO
+//	@GetMapping("/movie")
+//	public Movie getMovieByTitle() {
+//		return (Movie) movieService.getAllMovies();
+//	}
 
 }
