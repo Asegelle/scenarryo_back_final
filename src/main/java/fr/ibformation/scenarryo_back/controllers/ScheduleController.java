@@ -55,13 +55,18 @@ public class ScheduleController {
     // ------------------------- put --------------------------
 
 	@PutMapping("/update/{id}")
-	public Schedule updateSchedule (
+	public void updateSchedule (
 			@PathVariable("id") int id,
 			@RequestBody Schedule schedule) {
-		
+        Optional<Schedule> postSchedule = scheduleService.findScheduleById(id);
+        if (postSchedule.isPresent()) {
+        	scheduleService.updateSchedule(id, schedule);
+        } else {
+        	scheduleService.addSchedule(schedule);
+        }
 
-		schedule.setId(id);
-		return scheduleService.updateSchedule(id);
 	}
+	
+
 	
 }
