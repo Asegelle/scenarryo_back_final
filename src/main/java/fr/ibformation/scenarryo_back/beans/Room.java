@@ -11,7 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
@@ -21,9 +24,9 @@ import lombok.Setter;
 @Entity // Indique que c'est une table
 @Getter
 @Setter
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id")
+//@JsonIdentityInfo(
+//		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+//		  property = "id")
 @NoArgsConstructor // génération automatique d'un constructeur vide
 @Table
 public class Room {
@@ -35,7 +38,10 @@ public class Room {
 	private int roomNumber;
 	private int seatsQuantity;	
 	
+	
+	
 	@OneToMany (mappedBy="showRoom")
+	@JsonIgnoreProperties("showRoom")
 	private List<FilmShow> filmShow =  new ArrayList<FilmShow>();
 	
 	

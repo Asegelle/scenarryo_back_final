@@ -1,0 +1,14 @@
+diff a/src/main/java/fr/ibformation/scenarryo_back/beans/FilmShow.java b/src/main/java/fr/ibformation/scenarryo_back/beans/FilmShow.java	(rejected hunks)
+@@ -22,9 +22,9 @@
+ @Entity // Indique que c'est une table
+ @Getter
+ @Setter
+-@JsonIdentityInfo(
+-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+-		  property = "id")
++//@JsonIdentityInfo(
++//		  generator = ObjectIdGenerators.PropertyGenerator.class, 
++//		  property = "id")
+ @NoArgsConstructor // génération automatique d'un constructeur vide
+ @Table
+ public class FilmShow {

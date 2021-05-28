@@ -12,6 +12,7 @@ import fr.ibformation.scenarryo_back.beans.FilmShow;
 import fr.ibformation.scenarryo_back.services.FilmShowService;
 
 @RestController
+
 @CrossOrigin(origins = "*")
 @RequestMapping("/admin/film-show")
 public class FilmShowController {
@@ -21,7 +22,8 @@ public class FilmShowController {
 	
     // ------------------------- get --------------------------
 
-	@GetMapping("/get")
+
+	@GetMapping("/getAll")
 	public List<FilmShow> getAllFilmShowes() {
 		return filmShowService.displayAllFilmShowes();
 	}

@@ -16,6 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import fr.ibformation.scenarryo_back.enums.AgeEnum;
@@ -27,9 +28,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor // génération automatique d'un constructeur vide
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class, 
-        property = "id")
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.PropertyGenerator.class, 
+//        property = "id")
 @Table
 public class Movie {
 
@@ -47,6 +48,7 @@ public class Movie {
 	private String poster; // Strings car image en URL
 
 	@OneToMany (mappedBy="showMovie")
+	@JsonIgnoreProperties("showMovie")
 	private List<FilmShow> filmShow =  new ArrayList<FilmShow>();
 	
 	
