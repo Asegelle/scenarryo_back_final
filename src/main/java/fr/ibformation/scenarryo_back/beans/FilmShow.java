@@ -8,7 +8,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
@@ -19,9 +22,9 @@ import lombok.Setter;
 @Entity // Indique que c'est une table
 @Getter
 @Setter
-@JsonIdentityInfo(
-		  generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id")
+//@JsonIdentityInfo(
+//		  generator = ObjectIdGenerators.PropertyGenerator.class, 
+//		  property = "id")
 @NoArgsConstructor // génération automatique d'un constructeur vide
 @Table
 public class FilmShow {
@@ -34,12 +37,15 @@ public class FilmShow {
 
     @ManyToOne
     @JoinColumn(name="room_id")
+    @JsonIgnoreProperties("filmShow")
     private Room showRoom;
     @ManyToOne
     @JoinColumn(name="schedule_id")
+    @JsonIgnoreProperties("filmShow")
     private Schedule showSchedule;
     @ManyToOne
     @JoinColumn(name="movie_id")
+    @JsonIgnoreProperties("filmShow")
     private Movie showMovie;
     
     
