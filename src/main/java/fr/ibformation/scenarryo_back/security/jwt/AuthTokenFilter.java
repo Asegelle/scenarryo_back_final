@@ -1,5 +1,8 @@
 package fr.ibformation.scenarryo_back.security.jwt;
 
+
+
+
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -19,9 +22,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import fr.ibformation.scenarryo_back.security.services.UserDetailsServiceImpl;
 
-
-public class AuthTokenFilter extends OncePerRequestFilter{
-
+public class AuthTokenFilter extends OncePerRequestFilter {
 	@Autowired
 	private JwtUtils jwtUtils;
 

@@ -1,10 +1,9 @@
 package fr.ibformation.scenarryo_back.payload.response;
 
+
 import java.util.List;
 
 public class JwtResponse {
-
-	
 	private String token;
 	private String type = "Bearer";
 	private Long id;

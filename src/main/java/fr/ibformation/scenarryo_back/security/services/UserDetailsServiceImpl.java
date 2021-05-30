@@ -1,5 +1,7 @@
 package fr.ibformation.scenarryo_back.security.services;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,8 +13,7 @@ import fr.ibformation.scenarryo_back.beans.CinemaUser;
 import fr.ibformation.scenarryo_back.repository.UserRepository;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
-
+public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	UserRepository userRepository;
 

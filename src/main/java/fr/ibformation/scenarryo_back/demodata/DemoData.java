@@ -8,6 +8,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import fr.ibformation.scenarryo_back.beans.CinemaRole;
+import fr.ibformation.scenarryo_back.beans.CinemaUser;
 import fr.ibformation.scenarryo_back.beans.FilmShow;
 import fr.ibformation.scenarryo_back.beans.Movie;
 import fr.ibformation.scenarryo_back.beans.Room;
@@ -17,6 +19,9 @@ import fr.ibformation.scenarryo_back.dao.MovieDAO;
 import fr.ibformation.scenarryo_back.dao.RoomDAO;
 import fr.ibformation.scenarryo_back.dao.ScheduleDAO;
 import fr.ibformation.scenarryo_back.enums.AgeEnum;
+import fr.ibformation.scenarryo_back.enums.RoleEnum;
+import fr.ibformation.scenarryo_back.repository.RoleRepository;
+import fr.ibformation.scenarryo_back.repository.UserRepository;
 
 
 
@@ -24,6 +29,13 @@ import fr.ibformation.scenarryo_back.enums.AgeEnum;
 @Component
 public class DemoData {
 
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
 	@Autowired
 	private MovieDAO movieDAO;
 	 
@@ -42,6 +54,16 @@ public class DemoData {
 	
 	@EventListener
 	public void appReady (ApplicationReadyEvent event) {
+		
+		roleRepository.save(new CinemaRole(RoleEnum.ROLE_ADMIN));
+		roleRepository.save(new CinemaRole(RoleEnum.ROLE_MODERATOR));
+		roleRepository.save(new CinemaRole(RoleEnum.ROLE_USER));
+
+		//userRepository.save(new CinemaUser("Romain","romain@gmail.com","12345678"));
+		//userRepository.save(new CinemaUser("Yousra","yousra@gmail.com","12345678"));
+		//userRepository.save(new CinemaUser("Renaud","renaud@gmail.com","12345678"));
+
+		
 		Room room1 = new Room(1, 600);
 		roomDAO.save(room1);
 		roomDAO.save(new Room(2, 500));

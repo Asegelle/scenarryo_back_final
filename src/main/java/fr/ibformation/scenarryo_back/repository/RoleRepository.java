@@ -9,8 +9,6 @@ import fr.ibformation.scenarryo_back.beans.CinemaRole;
 import fr.ibformation.scenarryo_back.enums.RoleEnum;
 
 @Repository
-public interface RoleRepository extends JpaRepository<CinemaRole, Long>{
-
-	Optional<CinemaRole> findByroleName(RoleEnum roleName);
-	
+public interface RoleRepository extends JpaRepository<CinemaRole, Long> {
+	Optional<CinemaRole> findByName(RoleEnum name);
 }

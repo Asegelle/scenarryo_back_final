@@ -1,5 +1,7 @@
 package fr.ibformation.scenarryo_back.security;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,18 +21,15 @@ import fr.ibformation.scenarryo_back.security.jwt.AuthTokenFilter;
 import fr.ibformation.scenarryo_back.security.services.UserDetailsServiceImpl;
 
 
+
 @Configuration
-// allows Spring to find and automatically apply the class to the global Web Security.
 @EnableWebSecurity
-// provides AOP security on methods
 @EnableGlobalMethodSecurity(
 		// securedEnabled = true,
 		// jsr250Enabled = true,
 		prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 	@Autowired
-	//Spring Security will load User details to perform authentication & authorization
 	UserDetailsServiceImpl userDetailsService;
 
 	@Autowired
@@ -62,7 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable()
 			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			.authorizeRequests().antMatchers("/api/auth/**").permitAll()
+			.authorizeRequests().antMatchers("/**").permitAll()
+			// /** gives acces the all website
+			//.authorizeRequests().antMatchers("/api/auth/**").permitAll()
+
 			.antMatchers("/api/test/**").permitAll()
 			.anyRequest().authenticated();
 

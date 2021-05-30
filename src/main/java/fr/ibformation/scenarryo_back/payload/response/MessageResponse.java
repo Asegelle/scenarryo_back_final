@@ -1,7 +1,8 @@
 package fr.ibformation.scenarryo_back.payload.response;
 
-public class MessageResponse {
 
+
+public class MessageResponse {
 	private String message;
 
 	public MessageResponse(String message) {

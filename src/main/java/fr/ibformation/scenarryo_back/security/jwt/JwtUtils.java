@@ -1,6 +1,8 @@
 package fr.ibformation.scenarryo_back.security.jwt;
 
+
 import java.util.Date;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +13,8 @@ import org.springframework.stereotype.Component;
 import fr.ibformation.scenarryo_back.security.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
 
-
 @Component
 public class JwtUtils {
-
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
 	@Value("${bezkoder.app.jwtSecret}")

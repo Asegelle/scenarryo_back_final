@@ -1,7 +1,5 @@
 package fr.ibformation.scenarryo_back.beans;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,19 +32,18 @@ public class CinemaRole {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	//@Column (name="role")
-	private RoleEnum roleName;
+	private RoleEnum name;
 
 	
 	
 	//Constructors (empty auto generated)
-	public CinemaRole(Integer id, RoleEnum roleName) {
+	public CinemaRole(Integer id, RoleEnum name) {
 		this.id = id;
-		this.roleName = roleName;
+		this.name = name;
 	}
 	
-	public CinemaRole(RoleEnum roleName) {
-		this.roleName = roleName;
+	public CinemaRole(RoleEnum name) {
+		this.name = name;
 	}
 
 	
@@ -54,14 +51,7 @@ public class CinemaRole {
 	//ToString
 	@Override
 	public String toString() {
-		return "CinemaRole [id=" + id + ", roleName=" + roleName + "]";
+		return "CinemaRole [id=" + id + ", roleName=" + name + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+		
 }

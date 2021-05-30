@@ -1,5 +1,6 @@
 package fr.ibformation.scenarryo_back.controllers;
 
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,24 +21,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.ibformation.scenarryo_back.beans.CinemaRole;
-import fr.ibformation.scenarryo_back.beans.CinemaUser;
-import fr.ibformation.scenarryo_back.enums.RoleEnum;
+
 import fr.ibformation.scenarryo_back.payload.request.LoginRequest;
 import fr.ibformation.scenarryo_back.payload.request.SignupRequest;
 import fr.ibformation.scenarryo_back.payload.response.JwtResponse;
 import fr.ibformation.scenarryo_back.payload.response.MessageResponse;
-import fr.ibformation.scenarryo_back.security.services.UserDetailsImpl;
-import fr.ibformation.scenarryo_back.repository.UserRepository;
 import fr.ibformation.scenarryo_back.repository.RoleRepository;
+import fr.ibformation.scenarryo_back.repository.UserRepository;
 import fr.ibformation.scenarryo_back.security.jwt.JwtUtils;
+import fr.ibformation.scenarryo_back.security.services.UserDetailsImpl;
+
+import fr.ibformation.scenarryo_back.beans.CinemaRole;
+import fr.ibformation.scenarryo_back.beans.CinemaUser;
+import fr.ibformation.scenarryo_back.enums.RoleEnum;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-	
 	@Autowired
 	AuthenticationManager authenticationManager;
 
@@ -79,13 +80,13 @@ public class AuthController {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Username is already taken!"));
+					.body(new MessageResponse("Erreur : Nom Utilisateur déjà pris !"));
 		}
 
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()
-					.body(new MessageResponse("Error: Email is already in use!"));
+					.body(new MessageResponse("Erreur : Email déjà utilisé !"));
 		}
 
 		// Create new user's account
@@ -97,27 +98,27 @@ public class AuthController {
 		Set<CinemaRole> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			CinemaRole userRole = roleRepository.findByroleName(RoleEnum.ROLE_USER)
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+			CinemaRole userRole = roleRepository.findByName(RoleEnum.ROLE_USER)
+					.orElseThrow(() -> new RuntimeException("Erreur : Rôle non trouvé."));
 			roles.add(userRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
 				case "admin":
-					CinemaRole adminRole = roleRepository.findByroleName(RoleEnum.ROLE_ADMIN)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					CinemaRole adminRole = roleRepository.findByName(RoleEnum.ROLE_ADMIN)
+							.orElseThrow(() -> new RuntimeException("Erreur : Rôle non trouvé."));
 					roles.add(adminRole);
 
 					break;
 				case "mod":
-					CinemaRole modRole = roleRepository.findByroleName(RoleEnum.ROLE_MODERATOR)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					CinemaRole modRole = roleRepository.findByName(RoleEnum.ROLE_MODERATOR)
+							.orElseThrow(() -> new RuntimeException("Erreur : Rôle non trouvé."));
 					roles.add(modRole);
 
 					break;
 				default:
-					CinemaRole userRole = roleRepository.findByroleName(RoleEnum.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					CinemaRole userRole = roleRepository.findByName(RoleEnum.ROLE_USER)
+							.orElseThrow(() -> new RuntimeException("Erreur : Rôle non trouvé."));
 					roles.add(userRole);
 				}
 			});
@@ -126,6 +127,6 @@ public class AuthController {
 		user.setRoles(roles);
 		userRepository.save(user);
 
-		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+		return ResponseEntity.ok(new MessageResponse("L'utilisateur s'est enregistré avec succès !"));
 	}
 }

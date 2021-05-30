@@ -1,5 +1,6 @@
 package fr.ibformation.scenarryo_back.security.services;
 
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -14,7 +15,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import fr.ibformation.scenarryo_back.beans.CinemaUser;
 
 public class UserDetailsImpl implements UserDetails {
-
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
@@ -39,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	public static UserDetailsImpl build(CinemaUser user) {
 		List<GrantedAuthority> authorities = user.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getRoleName().name()))
+				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
 				.collect(Collectors.toList());
 
 		return new UserDetailsImpl(
