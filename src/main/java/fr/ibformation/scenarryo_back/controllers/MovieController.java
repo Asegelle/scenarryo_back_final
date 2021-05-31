@@ -24,24 +24,40 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 
+	
+	
 	@PostConstruct
 	@Transactional
 	public void init() {
 
 		movieService.getAllMovies();
 	}
+	
+	
+	// fonction afficher les fims
 
 	@GetMapping("/movie")
 	public List<Movie> getAllMovies() {
 		return movieService.getAllMovies();
 	}
+	
+	
+	// fonction ajouter un film
 
-	@PostMapping("/movie")
+	@PostMapping("/addmovie")
 	@Transactional // A ajouter lorsqu'on modifie qqc en BDD
-	public void addMovie(@RequestBody Movie movie) {
-		System.out.println("------------------------" + movie);
+	public List<Movie> addMovie(@RequestBody Movie movie) {		
 		movieService.addMovie(movie);
-
+		return getAllMovies();
+	}
+	
+	// fonction supprimer un film
+	
+	@PostMapping("/deletemovie")
+	@Transactional // A ajouter lorsqu'on modifie qqc en BDD
+	public  void deleteMovie(@RequestBody Movie movie) {
+		movieService.deleteMovie(movie);
+		
 	}
 	
 //	//add movie by admin
