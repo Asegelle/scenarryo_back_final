@@ -1,6 +1,6 @@
 package fr.ibformation.scenarryo_back.beans;
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,14 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import fr.ibformation.scenarryo_back.enums.AgeEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -39,9 +35,9 @@ public class Movie {
 	private int id;
 	private String title;
 	private String producer;
-	@DateTimeFormat(iso = ISO.DATE)
-	private LocalDate releaseDate;
-	AgeEnum ageLimited = AgeEnum.TOUS_PUBLIC;// "Tous public" par défaut si rien définie
+	// @DateTimeFormat(iso = ISO.DATE)
+	private String releaseDate;
+	private String ageLimited = "Tous public"; // "Tous public" par défaut si rien définie
 	@Column(columnDefinition = "TEXT") // Pour typer en base de donnée en "TEXT"
 	private String synopsis;
 	private String duration;
@@ -53,7 +49,7 @@ public class Movie {
 	
 	
 	
-	public Movie(String title, LocalDate releaseDate, AgeEnum ageLimited, String synopsis, String duration, String poster, String producer) {
+	public Movie(String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
 		this.title = title;
 		this.releaseDate = releaseDate;
 		this.ageLimited = ageLimited;
@@ -63,7 +59,7 @@ public class Movie {
 		this.producer=producer;
 	}
 
-	public Movie(int id,String title, LocalDate releaseDate, AgeEnum ageLimited, String synopsis, String duration, String poster, String producer) {
+	public Movie(int id,String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
 		this.id = id;
 		this.title = title;
 		this.releaseDate = releaseDate;
@@ -74,12 +70,10 @@ public class Movie {
 		this.producer=producer;
 	}
 	
-	public Movie(String title, String producer, LocalDate releaseDate, AgeEnum ageLimited, String synopsis,
+	public Movie(String title, String producer, String ageLimited,  String synopsis,
 			String duration, String poster) {
-		super();
 		this.title = title;
 		this.producer = producer;
-		this.releaseDate = releaseDate;
 		this.ageLimited = ageLimited;
 		this.synopsis = synopsis;
 		this.duration = duration;

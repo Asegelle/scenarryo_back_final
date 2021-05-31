@@ -16,17 +16,13 @@ public class MovieServiceImpl implements MovieService {
 	@Autowired
 	MovieDAO movieDAO;
 
-	@Override
-	@Transactional
-	public void addMovie(Movie movie) {
-		movieDAO.save(movie);
-	}
+	
 
+	// fonction d'affichage des films
+	
 	@Override
-
 	public List<Movie> getAllMovies() {
 
-		// System.out.println(movieDAO.findAll());
 		return (List<Movie>) movieDAO.findAll();
 		
 	}
@@ -35,5 +31,32 @@ public class MovieServiceImpl implements MovieService {
 	public Movie getMovieById(int id) {
 		return movieDAO.findById(id).orElse(null);	
 		}
+
+	
+//	// fonction pour accèder à un film dans la base de donnée
+//	@Override
+//	public List<Movie> getMoviesByTitle(String title) {
+//		
+//		return (List<Movie>) movieDAO.findAllByTitle(title);
+//	}
+
+	
+	
+	// fonction d'ajout de film dans la bdd
+	
+		@Override
+		@Transactional
+		public void addMovie(Movie movie) {
+			movieDAO.save(movie);
+		}
+		
+		
+	// Fonction supprimer un film
+		
+	@Override
+	public void deleteMovie(Movie movie) {
+		movieDAO.delete(movie);
+	}
+
 
 }

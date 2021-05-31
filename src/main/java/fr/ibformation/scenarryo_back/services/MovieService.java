@@ -11,5 +11,12 @@ public interface MovieService {
 	
 	public List<Movie> getAllMovies();
 
+
 	public Movie getMovieById(int id);
+
+	
+	// public List<Movie> getMoviesByTitle(String title);
+	
+	public void deleteMovie(Movie movie);
+
 }
