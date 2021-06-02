@@ -19,11 +19,17 @@ public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 
 	private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
+	/**
+	 * function commence :
+	 * This method will be triggerd anytime unauthenticated User requests a secured HTTP resource
+	 * @param request
+	 * @param response
+	 */
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
-		logger.error("Unauthorized error: {}", authException.getMessage());
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: Unauthorized");
+		logger.error("erreur non-autorisée : {}", authException.getMessage());
+		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "erreur: non-autorisé");
 	}
 
 }

@@ -17,11 +17,15 @@ import lombok.Setter;
 @Setter
 @Table(	name = "cinema_users", 
 		uniqueConstraints = { 
+				//Specifies that a unique constraint is to be included in bdd for a primary or secondary table. 
 			@UniqueConstraint(columnNames = "username"),
 			@UniqueConstraint(columnNames = "email") 
 		})
 @NoArgsConstructor
 public class CinemaUser {
+	
+	// --------------------------------------------------------------------------------
+	// Variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -45,13 +49,14 @@ public class CinemaUser {
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<CinemaRole> roles = new HashSet<>();
 
-
+	
+	// --------------------------------------------------------------------------------
+	// Constructors
 	public CinemaUser(String username, String email, String password) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
 	}
-
 
 	public CinemaUser(@NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
 			@NotBlank @Size(max = 120) String password, Set<CinemaRole> roles) {
@@ -62,6 +67,13 @@ public class CinemaUser {
 	}
 
 	
+	// --------------------------------------------------------------------------------
+	// ToString
+	@Override
+	public String toString() {
+		return "CinemaUser [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", roles=" + roles + "]";
+	}
 	
 	
 }

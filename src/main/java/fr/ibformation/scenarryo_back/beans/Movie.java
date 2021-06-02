@@ -47,6 +47,10 @@ public class Movie {
 	@JsonIgnoreProperties("showMovie")
 	private List<FilmShow> filmShow =  new ArrayList<FilmShow>();
 	
+	@OneToMany  (mappedBy="commentMovie")
+	@JsonIgnoreProperties("commentMovie")
+	private List<MovieComments> filmComment = new ArrayList<>();
+	
 	
 	
 	public Movie(String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
@@ -80,6 +84,39 @@ public class Movie {
 		this.poster = poster;
 	}
 	
+	public Movie(String title, String producer, String ageLimited, String synopsis, String duration,
+			String poster, List<MovieComments> filmComment) {
+		this.title = title;
+		this.producer = producer;
+		this.ageLimited = ageLimited;
+		this.synopsis = synopsis;
+		this.duration = duration;
+		this.poster = poster;
+		this.filmComment = filmComment;
+	}
+	
+	public Movie(int id, String title, String producer, String ageLimited, String synopsis, String duration,
+			String poster, List<MovieComments> filmComment) {
+		this.id = id;
+		this.title = title;
+		this.producer = producer;
+		this.ageLimited = ageLimited;
+		this.synopsis = synopsis;
+		this.duration = duration;
+		this.poster = poster;
+		this.filmComment = filmComment;
+	}
+	
+	public Movie(int id, String title, String producer, String ageLimited, String synopsis, String duration,
+			String poster) {
+		this.id = id;
+		this.title = title;
+		this.producer = producer;
+		this.ageLimited = ageLimited;
+		this.synopsis = synopsis;
+		this.duration = duration;
+		this.poster = poster;
+	}
 	
 	
 	@Override
@@ -89,6 +126,12 @@ public class Movie {
 				+ "]";
 	}
 
+
+
+	public void addComment(MovieComments movieComments) {
+		filmComment.add(movieComments);
+		movieComments.setCommentMovie(this);
+	}
 	
 
 	

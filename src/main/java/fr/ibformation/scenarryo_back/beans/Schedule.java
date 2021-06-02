@@ -34,6 +34,8 @@ import lombok.Setter;
 @Table(name = "schedule")
 public class Schedule {
 
+	// --------------------------------------------------------------------------------
+	// Variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -48,7 +50,8 @@ public class Schedule {
 	
 	
 
-
+	// --------------------------------------------------------------------------------
+	// Constructors
 	public Schedule(LocalDate showDate, String startingHour, String endingHour) {
 		this.showDate = showDate;
 		this.startingHour = startingHour;
@@ -63,8 +66,8 @@ public class Schedule {
 	}
 
 	
-	
-	
+	// --------------------------------------------------------------------------------
+	// ToString
 	@Override
 	public String toString() {
 		return "Schedule [id=" + id + ", showDate=" + showDate + ", startingHour=" + startingHour + ", endingHour="

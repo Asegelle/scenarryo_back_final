@@ -15,20 +15,29 @@ public class ScheduleServiceImpl implements ScheduleService{
 	@Autowired
 	ScheduleDAO scheduleDAO;
 	
-	
+    // ------------------------- get --------------------------
+
 	@Override
 	public List<Schedule> displayAllSchedules() {
 		System.out.println("display all Schedules");
 		return (List<Schedule>) scheduleDAO.findAll();
 	}
 
+	@Override
+	public Optional<Schedule> findScheduleById(int id) {
+		return scheduleDAO.findById(id);
+	}
+	
+	
+    // ------------------------- delete --------------------------
 
 	@Override
 	public void deleteScheduleById(int id) {
 		scheduleDAO.deleteById(id);
-		
 	}
 
+	
+    // ------------------------- post --------------------------
 
 	@Override
 	public Schedule addSchedule(Schedule schedule) {
@@ -37,19 +46,14 @@ public class ScheduleServiceImpl implements ScheduleService{
 		return scheduleDAO.save(schedule);
 	}
 
+	
+    // ------------------------- put --------------------------
 
 	@Override
 	public Schedule updateSchedule(int id) {
 		Schedule schedule = new Schedule();
 		return scheduleDAO.save(schedule);
 	}
-
-
-	@Override
-	public Optional<Schedule> findScheduleById(int id) {
-		return scheduleDAO.findById(id);
-	}
-
 
 	@Override
 	public void updateSchedule(int id, Schedule schedule) {
@@ -59,7 +63,6 @@ public class ScheduleServiceImpl implements ScheduleService{
         forUpdate.setStartingHour(schedule.getStartingHour());
         forUpdate.setEndingHour(schedule.getEndingHour());
         scheduleDAO.save(forUpdate);
-		
 	}
 
 	

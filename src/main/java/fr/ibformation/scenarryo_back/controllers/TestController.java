@@ -7,10 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+// controller made specifically to perform tests with PostMan
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/test")
 public class TestController {
+	
+	// ----------------------- get -------------------------
+	
 	@GetMapping("/all")
 	public String allAccess() {
 		return "Public Content.";

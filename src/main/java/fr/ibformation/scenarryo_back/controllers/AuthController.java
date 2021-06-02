@@ -39,6 +39,10 @@ import fr.ibformation.scenarryo_back.enums.RoleEnum;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+	
+	
+    // ------------------------- Autowired --------------------------
+
 	@Autowired
 	AuthenticationManager authenticationManager;
 
@@ -54,13 +58,30 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
+	
+    // ------------------------- post --------------------------
+	
+	// post of the form to sign-in
+	/**
+	 * function authenticateUser :
+	 * to verify users info, validate signin if ok and generate an access token for the session
+	 * @param loginRequest (object associated to the speficif form of login)
+	 * @return ResponseEntity.ok(new JwtResponse(jwt, 
+												 userDetails.getId(), 
+												 userDetails.getUsername(), 
+												 userDetails.getEmail(), 
+												 roles))
+	 */
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
+		// to validate object
 		Authentication authentication = authenticationManager.authenticate(
+				// gets {username, password} from login Request
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		// Once the authentication server confirms the identity of the client, an access token (JWT) is generated
 		String jwt = jwtUtils.generateJwtToken(authentication);
 		
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();		
@@ -68,6 +89,7 @@ public class AuthController {
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
+		// If successful : returns a fully populated Authentication object
 		return ResponseEntity.ok(new JwtResponse(jwt, 
 												 userDetails.getId(), 
 												 userDetails.getUsername(), 
@@ -75,14 +97,22 @@ public class AuthController {
 												 roles));
 	}
 
+	// post of the form to sign-up
+	/**
+	 * function registerUser :
+	 * to create account for a new user
+	 * @param signUpRequest (object associated to the speficif form of signUp)
+	 * @return ResponseEntity.ok(new MessageResponse("L'utilisateur s'est enregistré avec succès !"))
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+		// verify if username already exists
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Erreur : Nom Utilisateur déjà pris !"));
 		}
-
+		// verify if email already exists
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
 			return ResponseEntity
 					.badRequest()
@@ -96,7 +126,8 @@ public class AuthController {
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<CinemaRole> roles = new HashSet<>();
-
+		
+		// if no role to this user : set as user (for general use of the web site)
 		if (strRoles == null) {
 			CinemaRole userRole = roleRepository.findByName(RoleEnum.ROLE_USER)
 					.orElseThrow(() -> new RuntimeException("Erreur : Rôle non trouvé."));
@@ -123,7 +154,8 @@ public class AuthController {
 				}
 			});
 		}
-
+		
+		// save new user in bdd
 		user.setRoles(roles);
 		userRepository.save(user);
 

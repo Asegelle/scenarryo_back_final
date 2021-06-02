@@ -28,6 +28,10 @@ public class ScheduleController {
 	
     // ------------------------- get --------------------------
 
+	/**
+	 * function getAllSchedules :
+	 * @return scheduleService.displayAllSchedules();
+	 */
 	@GetMapping("/get")
 	public List<Schedule> getAllSchedules() {
 		return scheduleService.displayAllSchedules();
@@ -36,6 +40,10 @@ public class ScheduleController {
 	
     // ------------------------- delete --------------------------
 
+	/**
+	 * function deleteScheduleById :
+	 * @param id (id of the schedule to delete)
+	 */
 	@DeleteMapping("/delete/{id}")
 	public void deleteScheduleById (@PathVariable("id") int id) {
 		scheduleService.deleteScheduleById(id);
@@ -44,6 +52,11 @@ public class ScheduleController {
 	
     // ------------------------- post --------------------------
 
+	/**
+	 * function addSchedule :
+	 * @param schedule (schedule you post from the form in angular)
+	 * @return schedule
+	 */
 	@PostMapping("/add")
 	public Schedule addSchedule (@RequestBody Schedule schedule) {
 		scheduleService.addSchedule(schedule);
@@ -54,6 +67,11 @@ public class ScheduleController {
 	
     // ------------------------- put --------------------------
 
+	/**
+	 * function updateSchedule :
+	 * @param id (id of the schedule to update)
+	 * @param schedule
+	 */
 	@PutMapping("/update/{id}")
 	public void updateSchedule (
 			@PathVariable("id") int id,

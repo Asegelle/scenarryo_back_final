@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import fr.ibformation.scenarryo_back.beans.Movie;
+import fr.ibformation.scenarryo_back.beans.MovieComments;
 import fr.ibformation.scenarryo_back.services.MovieService;
 	
 
@@ -35,7 +37,17 @@ class ScenarryoBackApplicationTests {
 		System.out.println("fin");
 		
 	
+		// test add comment
+		Movie movieTest = new Movie ("JUNIT", "David Yates",  "", "Synopsis1", 
+				"02:10:00", "https://www.legaliondesetoiles.com/photo/art/grande/3337709-4790710.jpg?v=1520758687");
 		
+		MovieComments test1 = new MovieComments("JUNIT test comment",movieTest);
+		System.out.println("test1 : "+test1);
+		movieService.addComment(test1);
+		
+		
+		
+		//movieService.postCommentsByMovie(0, movieTest);
 		
 	}
 

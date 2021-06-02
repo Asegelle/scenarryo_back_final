@@ -24,18 +24,18 @@ import lombok.Setter;
 @Table(name = "cinema_roles")
 public class CinemaRole {
 
-	
+	// --------------------------------------------------------------------------------
 	//Variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING) // convert enum in string in bdd
 	@Column(length = 20)
 	private RoleEnum name;
 
 	
-	
+	// --------------------------------------------------------------------------------
 	//Constructors (empty auto generated)
 	public CinemaRole(Integer id, RoleEnum name) {
 		this.id = id;
@@ -47,7 +47,7 @@ public class CinemaRole {
 	}
 
 	
-	
+	// --------------------------------------------------------------------------------
 	//ToString
 	@Override
 	public String toString() {

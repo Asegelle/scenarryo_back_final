@@ -22,15 +22,25 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import fr.ibformation.scenarryo_back.security.services.UserDetailsServiceImpl;
 
+// define a filter that executes once per request
 public class AuthTokenFilter extends OncePerRequestFilter {
+	
+	// ---------------- autowired ------------------------
 	@Autowired
 	private JwtUtils jwtUtils;
 
 	@Autowired
 	private UserDetailsServiceImpl userDetailsService;
 
+	
 	private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
 
+	/**
+	 * function doFilterInternal :
+	 * @param request
+	 * @param response
+	 * @param filterChain
+	 */
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -47,12 +57,17 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 		} catch (Exception e) {
-			logger.error("Cannot set user authentication: {}", e);
+			logger.error("Impossible de définir l'authentification utilisateur: {}", e);
 		}
 
 		filterChain.doFilter(request, response);
 	}
 
+	/**
+	 * function parseJwt :
+	 * @param request
+	 * @return null
+	 */
 	private String parseJwt(HttpServletRequest request) {
 		String headerAuth = request.getHeader("Authorization");
 

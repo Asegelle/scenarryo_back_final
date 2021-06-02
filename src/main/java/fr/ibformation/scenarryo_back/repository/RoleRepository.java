@@ -10,5 +10,11 @@ import fr.ibformation.scenarryo_back.enums.RoleEnum;
 
 @Repository
 public interface RoleRepository extends JpaRepository<CinemaRole, Long> {
+	
+	/**
+	 * function findByName :
+	 * @param name 
+	 * @return Optional CinemaRole
+	 */
 	Optional<CinemaRole> findByName(RoleEnum name);
 }

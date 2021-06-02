@@ -1,6 +1,11 @@
 package fr.ibformation.scenarryo_back.services;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 import javax.transaction.Transactional;
 
@@ -8,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.ibformation.scenarryo_back.beans.Movie;
+import fr.ibformation.scenarryo_back.beans.MovieComments;
+import fr.ibformation.scenarryo_back.beans.Schedule;
+import fr.ibformation.scenarryo_back.dao.MovieCommentsDAO;
 import fr.ibformation.scenarryo_back.dao.MovieDAO;
 
 @Service
@@ -15,7 +23,8 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	MovieDAO movieDAO;
-
+	@Autowired
+	MovieCommentsDAO movieCommentsDAO;
 	
 
 	// fonction d'affichage des films
@@ -28,8 +37,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 
 	@Override
-	public Movie getMovieById(int id) {
-		return movieDAO.findById(id).orElse(null);	
+	public Optional<Movie> getMovieById(int id) {
+		return movieDAO.findById(id);	
 		}
 
 	
@@ -56,6 +65,80 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public void deleteMovie(Movie movie) {
 		movieDAO.delete(movie);
+	}
+
+	
+	@Override
+	public List<MovieComments> getAllComments() {
+		return (List<MovieComments>) movieCommentsDAO.findAll();
+	}
+	
+	@Override
+	public List<MovieComments> getCommentsByMovieId(int movieId) {
+		Movie movie;
+		try {
+			movie = movieDAO.findById(movieId).get();
+		return movie.getFilmComment();
+		} catch (Exception e) {
+			return new ArrayList<MovieComments>();	
+		}
+		
+	}
+
+	@Override
+	public MovieComments getCommentsById(int id) {
+		return movieCommentsDAO.findById(id).orElse(null);	
+	}
+	
+	@Override
+	public void postCommentsByMovie(int id, Movie movie) {
+		Optional<Movie> postMovie = getMovieById(id);
+		Movie forUpdate = postMovie.get();
+		forUpdate.setFilmComment(movie.getFilmComment());
+        movieDAO.save(forUpdate);
+		
+	}
+	
+		
+
+	@Override
+	public void addComment(MovieComments movieComment) {
+		movieCommentsDAO.save(movieComment);
+		
+	}
+
+
+	// method to discriminate bad words
+	public String badWordsFunction(String text) throws FileNotFoundException {
+		// import du fichier et conversion en un arraylist
+		
+		List<String> badWordsList = new ArrayList<String>();
+		badWordsList.add("batard");
+		badWordsList.add("connard");
+		badWordsList.add("salope");
+		badWordsList.add("pute");
+		badWordsList.add("enculer");
+		
+		/*
+	    File txt = new File("file/bad_words.txt");
+	    Scanner scan = new Scanner(txt);
+	    int countWord = 0;
+	    ArrayList<String> badWords = new ArrayList<String>() ;
+	    while(scan.hasNextLine()){
+	    	badWords.add(scan.nextLine());
+			countWord++;
+	    }
+		System.out.println("nombre de mauvais mots : "+countWord);
+	    System.out.println(badWords);
+	    */
+		// comparaison d'un text à la liste et remplacement des mauvais mots par ****
+	    for (String word : badWordsList) {
+	        String xxx = new String(new char[word.length()]).replace("\0", "*");        
+	        text = text.toLowerCase().replace(word, xxx);
+	    }
+	    //scan.close();
+	    
+	    return text;
 	}
 
 

@@ -3,7 +3,11 @@ package fr.ibformation.scenarryo_back.payload.response;
 
 import java.util.List;
 
+//class associated to user, its role and its access token
 public class JwtResponse {
+	
+	// --------------------------------------------------------------------------------
+	// Variables
 	private String token;
 	private String type = "Bearer";
 	private Long id;
@@ -11,6 +15,9 @@ public class JwtResponse {
 	private String email;
 	private List<String> roles;
 
+	
+	// --------------------------------------------------------------------------------
+	// Constructor
 	public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
 		this.token = accessToken;
 		this.id = id;
@@ -19,6 +26,9 @@ public class JwtResponse {
 		this.roles = roles;
 	}
 
+	
+	// --------------------------------------------------------------------------------
+	// Getter / Setter
 	public String getAccessToken() {
 		return token;
 	}
