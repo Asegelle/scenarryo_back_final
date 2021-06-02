@@ -38,6 +38,9 @@ public class Room {
 	private int roomNumber;
 	private int seatsQuantity;	
 	
+	private int rowsNumber;
+	private int columnsNumber;
+	
 	
 	
 	@OneToMany (mappedBy="showRoom")
@@ -57,9 +60,18 @@ public class Room {
 		this.seatsQuantity = seatsQuantity;
 	}
 	
+	
+	
 	@Override
 	public String toString() {
 		return "Room [id=" + id + ", roomNumber=" + roomNumber + ", seatsQuantity=" + seatsQuantity + "]";
+	}
+
+	public Room(int roomNumber, int seatsQuantity, int rowsNumber, int columnsNumber) {
+		this.roomNumber = roomNumber;
+		this.seatsQuantity = seatsQuantity;
+		this.rowsNumber = rowsNumber;
+		this.columnsNumber = columnsNumber;
 	}
 	
 }

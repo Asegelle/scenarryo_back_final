@@ -2,6 +2,7 @@ package fr.ibformation.scenarryo_back.services;
 
 import java.util.List;
 
+import fr.ibformation.scenarryo_back.beans.BookedSeats;
 import fr.ibformation.scenarryo_back.beans.FilmShow;
 
 public interface FilmShowService {
@@ -12,7 +13,11 @@ public interface FilmShowService {
 
 	public FilmShow createShow(FilmShow filmShow);
 
-	public void bookASeat(int i, int j);
+	public void bookASeat(BookedSeats bookedSeat);
+
+	public List<BookedSeats> getBookedSeatsByShow(int id);
+
+	public FilmShow getById(int id);
 
 	
 }

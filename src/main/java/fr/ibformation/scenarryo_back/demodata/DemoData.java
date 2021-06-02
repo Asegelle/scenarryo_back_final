@@ -8,12 +8,14 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import fr.ibformation.scenarryo_back.beans.BookedSeats;
 import fr.ibformation.scenarryo_back.beans.CinemaRole;
 import fr.ibformation.scenarryo_back.beans.CinemaUser;
 import fr.ibformation.scenarryo_back.beans.FilmShow;
 import fr.ibformation.scenarryo_back.beans.Movie;
 import fr.ibformation.scenarryo_back.beans.Room;
 import fr.ibformation.scenarryo_back.beans.Schedule;
+import fr.ibformation.scenarryo_back.dao.BookedSeatsDAO;
 import fr.ibformation.scenarryo_back.dao.FilmShowDAO;
 import fr.ibformation.scenarryo_back.dao.MovieDAO;
 import fr.ibformation.scenarryo_back.dao.RoomDAO;
@@ -47,6 +49,8 @@ public class DemoData {
 	
 	@Autowired
 	private ScheduleDAO scheduleDAO;
+	@Autowired
+	private BookedSeatsDAO bookedSeatsDAO;
 	/*
 	@Autowired
 	private FilmShowDAO filmShowDAO;
@@ -64,7 +68,7 @@ public class DemoData {
 		//userRepository.save(new CinemaUser("Renaud","renaud@gmail.com","12345678"));
 
 		
-		Room room1 = new Room(1, 600);
+		Room room1 = new Room(0, 100, 10, 10);
 		roomDAO.save(room1);
 		roomDAO.save(new Room(2, 500));
 		roomDAO.save(new Room(3, 1000));
@@ -121,17 +125,21 @@ public class DemoData {
 		//movieDAO.save(new Movie ("HP", "Alex", LocalDate.of(1991,01,29), Age.M_18, "synopsis test.", "02:10:00", "https://www.legaliondesetoiles.com/photo/art/grande/3337709-4790710.jpg?v=1520758687"));
 		
 		//showDAO.save(new Show(7, 0, new Room (6, 600),new Schedule (LocalDate.of(2021, 5, 16), "22:00", "24:00"),new Movie ("HP", "Alex", LocalDate.of(1991,01,29), Age.M_18, "synopsis test.", "02:10:00", "https://www.legaliondesetoiles.com/photo/art/grande/3337709-4790710.jpg?v=1520758687")));
-		filmShowDAO.save(new FilmShow(7, 67, room1, schedule1, movie1));
+		FilmShow show = filmShowDAO.save(new FilmShow(7, 1, room1, schedule1, movie1));
 
-		filmShowDAO.save(new FilmShow(9, 6, room1, schedule2, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule3, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule4, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule5, movie1));
+		filmShowDAO.save(new FilmShow(9, 0, room1, schedule2, movie1));
+		filmShowDAO.save(new FilmShow(7, 0, room1, schedule3, movie1));
+		filmShowDAO.save(new FilmShow(7, 0, room1, schedule4, movie1));
+		filmShowDAO.save(new FilmShow(7, 0, room1, schedule5, movie1));
 //		FilmShow(int priceTicket, int bookedSeats, Room showRoom, Schedule showSchedule, Movie showMovie)
 
-		filmShowDAO.save(new FilmShow(9, 6, room1, schedule1, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule1, movie1));
+		filmShowDAO.save(new FilmShow(9, 1, room1, schedule1, movie1));
+		filmShowDAO.save(new FilmShow(7, 1, room1, schedule1, movie1));
 ////		FilmShow(int priceTicket, int bookedSeats, Room showRoom, Schedule showSchedule, Movie showMovie)
+	
+	
+		bookedSeatsDAO.save(new BookedSeats(2, 3,  show) );
+	
 	}
 	
 	
