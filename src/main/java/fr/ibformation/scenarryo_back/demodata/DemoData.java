@@ -76,17 +76,17 @@ public class DemoData {
 		roomDAO.save(new Room(5, 1000));
 		
 		
-		Schedule schedule1 = new Schedule(LocalDate.of(2021, 6, 01), "10:00", "12:00" );
-		Schedule schedule2 = new Schedule(LocalDate.of(2021, 6, 01), "12:00", "14:00" );
-		Schedule schedule3 = new Schedule(LocalDate.of(2021, 6, 01), "14:00", "16:00" );
-		Schedule schedule4 = new Schedule(LocalDate.of(2021, 6, 02), "10:00", "12:00" );
-		Schedule schedule5 = new Schedule(LocalDate.of(2021, 6, 02), "14:00", "16:00" );
+		Schedule schedule1 = new Schedule(LocalDate.of(2021, 6, 03), "10:00", "12:00" );
+		Schedule schedule2 = new Schedule(LocalDate.of(2021, 6, 03), "12:00", "14:00" );
+		Schedule schedule3 = new Schedule(LocalDate.of(2021, 6, 04), "14:00", "16:00" );
+		Schedule schedule4 = new Schedule(LocalDate.of(2021, 6, 03), "10:00", "12:00" );
+		Schedule schedule5 = new Schedule(LocalDate.of(2021, 6, 04), "14:00", "16:00" );
 		scheduleDAO.save(schedule1);
 		scheduleDAO.save(schedule2);
 		scheduleDAO.save(schedule3);
 		scheduleDAO.save(schedule4);
 		scheduleDAO.save(schedule5);
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 02), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 03), "20:00", "22:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 03), "10:00", "12:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "12:00", "14:00" ));
 		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "14:00", "16:00" ));
