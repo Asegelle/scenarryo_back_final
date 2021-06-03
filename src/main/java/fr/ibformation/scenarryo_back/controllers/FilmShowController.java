@@ -35,6 +35,10 @@ public class FilmShowController {
 		return filmShowService.displayAllFilmShowes();
 	}
 	
+//	@GetMapping("/filmshow-by-id/{id}")
+//	public FilmShow getFilmShowById(@PathVariable("id") int id) {
+//		return filmShowService.getById(id);
+//	}
 	
 	@GetMapping("/book-seats-by-show/{id}")
 	public List<BookedSeats> getBookedSeatsByShow(@PathVariable("id") int id ){

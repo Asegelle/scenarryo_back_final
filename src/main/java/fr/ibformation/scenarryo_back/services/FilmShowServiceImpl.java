@@ -50,20 +50,19 @@ public class FilmShowServiceImpl implements FilmShowService {
 		bookedDAO.save(bookedSeat);
 	}
 	
-	@Override
-	public FilmShow getById(int id) {
-		System.out.println("dans service ");
-		System.out.println(filmShowDAO.findById(id).orElse(null));
-		return filmShowDAO.findById(id).orElse(null);
-	}
+//	@Override
+//	public FilmShow getById(int id) {
+//		System.out.println("dans service ");
+//		System.out.println(filmShowDAO.findById(id).orElse(null));
+//		return filmShowDAO.findById(id).orElse(null);
+//	}
 
 
 	@Override
 	@Transactional
 	public List<BookedSeats> getBookedSeatsByShow(int id) {
 		
-//		return (List<BookedSeats>) bookedDAO.findByFilmShow(getById(id));
-		return null;
+		return (List<BookedSeats>) bookedDAO.findByFilmShow_id(id);
 	}
 	
 	

@@ -17,7 +17,7 @@ public interface FilmShowService {
 
 	public List<BookedSeats> getBookedSeatsByShow(int id);
 
-	public FilmShow getById(int id);
+//	public FilmShow getById(int id);
 
 	
 }

@@ -29,6 +29,7 @@ public class BookedSeats {
 	
 	@ManyToOne
 	@JoinColumn(name="showfilm_id")
+	@JsonIgnoreProperties({"showRoom","showSchedule","showMovie"})
 	private FilmShow filmShow;
 
 	public BookedSeats(int placeBooked_row, int placeBooked_column, FilmShow filmShow) {

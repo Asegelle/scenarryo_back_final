@@ -12,7 +12,9 @@ import fr.ibformation.scenarryo_back.beans.FilmShow;
 
 public interface BookedSeatsDAO extends CrudRepository<BookedSeats, Integer> {
 
-	// List<BookedSeats> findByFilmShow(FilmShow show);
+	List<BookedSeats> findByFilmShow_id(int id);
+	
+	
 	@Modifying
 	@Query("update FilmShow f set f.bookedSeats = :newBookedSeats where f.id = :id")
 	void updateBookedSeats(@Param(value = "id") int id, @Param(value = "newBookedSeats") int newBookedSeats);
