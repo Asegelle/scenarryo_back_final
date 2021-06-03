@@ -10,6 +10,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import fr.ibformation.scenarryo_back.beans.BookedSeats;
 import fr.ibformation.scenarryo_back.beans.CinemaRole;
 import fr.ibformation.scenarryo_back.beans.CinemaUser;
 import fr.ibformation.scenarryo_back.beans.FilmShow;
@@ -17,6 +18,7 @@ import fr.ibformation.scenarryo_back.beans.Movie;
 import fr.ibformation.scenarryo_back.beans.MovieComments;
 import fr.ibformation.scenarryo_back.beans.Room;
 import fr.ibformation.scenarryo_back.beans.Schedule;
+import fr.ibformation.scenarryo_back.dao.BookedSeatsDAO;
 import fr.ibformation.scenarryo_back.dao.FilmShowDAO;
 import fr.ibformation.scenarryo_back.dao.MovieDAO;
 import fr.ibformation.scenarryo_back.dao.RoomDAO;
@@ -54,6 +56,8 @@ public class DemoData {
 	
 	@Autowired
 	private ScheduleDAO scheduleDAO;
+	@Autowired
+	private BookedSeatsDAO bookedSeatsDAO;
 	/*
 	@Autowired
 	private FilmShowDAO filmShowDAO;
@@ -72,37 +76,40 @@ public class DemoData {
 		//userRepository.save(new CinemaUser("Renaud","renaud@gmail.com","12345678"));
 
 		// add rooms in database
-		Room room1 = new Room(1, 600);
+		
+		Room room1 = new Room(0, 100, 10, 10);
 		roomDAO.save(room1);
 		roomDAO.save(new Room(2, 500));
 		roomDAO.save(new Room(3, 1000));
 		roomDAO.save(new Room(4, 200));
 		roomDAO.save(new Room(5, 1000));
 		
+
+		
 		// add schedules in database
-		Schedule schedule1 = new Schedule(LocalDate.of(2021, 5, 28), "10:00", "12:00" );
-		Schedule schedule2 = new Schedule(LocalDate.of(2021, 5, 28), "12:00", "14:00" );
-		Schedule schedule3 = new Schedule(LocalDate.of(2021, 5, 28), "14:00", "16:00" );
-		Schedule schedule4 = new Schedule(LocalDate.of(2021, 5, 29), "10:00", "12:00" );
-		Schedule schedule5 = new Schedule(LocalDate.of(2021, 5, 29), "14:00", "16:00" );
+		Schedule schedule1 = new Schedule(LocalDate.of(2021, 6, 03), "10:00", "12:00" );
+		Schedule schedule2 = new Schedule(LocalDate.of(2021, 6, 03), "12:00", "14:00" );
+		Schedule schedule3 = new Schedule(LocalDate.of(2021, 6, 04), "14:00", "16:00" );
+		Schedule schedule4 = new Schedule(LocalDate.of(2021, 6, 03), "10:00", "12:00" );
+		Schedule schedule5 = new Schedule(LocalDate.of(2021, 6, 04), "14:00", "16:00" );
 		scheduleDAO.save(schedule1);
 		scheduleDAO.save(schedule2);
 		scheduleDAO.save(schedule3);
 		scheduleDAO.save(schedule4);
 		scheduleDAO.save(schedule5);
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 29), "20:00", "22:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 30), "10:00", "12:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 30), "12:00", "14:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 30), "14:00", "16:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 28), "16:00", "18:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 28), "18:00", "20:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 29), "20:00", "22:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "10:00", "12:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "12:00", "14:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "14:00", "16:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "16:00", "18:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "18:00", "20:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 5, 31), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 03), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 03), "10:00", "12:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "12:00", "14:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "14:00", "16:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "16:00", "18:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 28), "18:00", "20:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 29), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "10:00", "12:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "12:00", "14:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "14:00", "16:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "16:00", "18:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "18:00", "20:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "20:00", "22:00" ));
 		
 		// add movies in database
 		Movie movie1 = new Movie ("Harry Potter à l'école des sorciers", "Chris Columbus", "", "Orphelin, Harry Potter a été recueilli à contrecœur par son oncle Vernon et sa tante Pétunia, aussi cruels que mesquins, qui n'hésitent pas à le faire dormir dans le placard sous l'escalier. Constamment maltraité, il doit en outre supporter les jérémiades de son cousin Dudley, garçon cupide et archi-gâté par ses parents. De leur côté, Vernon et Pétunia détestent leur neveu dont la présence leur rappelle sans cesse le tempérament \"imprévisible\" des parents du garçon et leur mort mystérieuse.\r\n"
@@ -144,17 +151,21 @@ public class DemoData {
 		//movieDAO.save(new Movie ("HP", "Alex", LocalDate.of(1991,01,29), Age.M_18, "synopsis test.", "02:10:00", "https://www.legaliondesetoiles.com/photo/art/grande/3337709-4790710.jpg?v=1520758687"));
 		
 		//showDAO.save(new Show(7, 0, new Room (6, 600),new Schedule (LocalDate.of(2021, 5, 16), "22:00", "24:00"),new Movie ("HP", "Alex", LocalDate.of(1991,01,29), Age.M_18, "synopsis test.", "02:10:00", "https://www.legaliondesetoiles.com/photo/art/grande/3337709-4790710.jpg?v=1520758687")));
-		filmShowDAO.save(new FilmShow(7, 67, room1, schedule1, movie1));
+		FilmShow show = filmShowDAO.save(new FilmShow(7, 1, room1, schedule1, movie1));
 
-		filmShowDAO.save(new FilmShow(9, 6, room1, schedule2, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule3, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule4, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule5, movie1));
+		filmShowDAO.save(new FilmShow(9, 0, room1, schedule2, movie1));
+		filmShowDAO.save(new FilmShow(7, 0, room1, schedule3, movie1));
+		filmShowDAO.save(new FilmShow(7, 0, room1, schedule4, movie1));
+		filmShowDAO.save(new FilmShow(7, 0, room1, schedule5, movie1));
 //		FilmShow(int priceTicket, int bookedSeats, Room showRoom, Schedule showSchedule, Movie showMovie)
 
-		filmShowDAO.save(new FilmShow(9, 6, room1, schedule1, movie1));
-		filmShowDAO.save(new FilmShow(7, 16, room1, schedule1, movie1));
+		filmShowDAO.save(new FilmShow(9, 1, room1, schedule1, movie1));
+		filmShowDAO.save(new FilmShow(7, 1, room1, schedule1, movie1));
 ////		FilmShow(int priceTicket, int bookedSeats, Room showRoom, Schedule showSchedule, Movie showMovie)
+	
+	
+		bookedSeatsDAO.save(new BookedSeats(2, 3,  show) );
+	
 	}
 	
 	
