@@ -53,7 +53,7 @@ public class Movie {
 	
 	
 	
-	public Movie(String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
+	/*public Movie(String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
 		this.title = title;
 		this.releaseDate = releaseDate;
 		this.ageLimited = ageLimited;
@@ -61,7 +61,7 @@ public class Movie {
 		this.duration = duration;
 		this.poster = poster;
 		this.producer=producer;
-	}
+	}*/
 
 	public Movie(int id,String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
 		this.id = id;
@@ -80,6 +80,17 @@ public class Movie {
 		this.producer = producer;
 		this.ageLimited = ageLimited;
 		this.synopsis = synopsis;
+		this.duration = duration;
+		this.poster = poster;
+	}
+	
+	public Movie(String title, String producer, String ageLimited,  String synopsis,
+			String releaseDate, String duration, String poster) {
+		this.title = title;
+		this.producer = producer;
+		this.ageLimited = ageLimited;
+		this.synopsis = synopsis;
+		this.releaseDate=releaseDate;
 		this.duration = duration;
 		this.poster = poster;
 	}
