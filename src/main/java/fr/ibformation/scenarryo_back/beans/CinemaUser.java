@@ -67,6 +67,13 @@ public class CinemaUser {
 	}
 
 	
+	/*public void addRole(CinemaRole cinemaRole) {
+		roles.add(cinemaRole);
+		cinemaRole.setName(this);
+	}*/
+	
+	
+	
 	// --------------------------------------------------------------------------------
 	// ToString
 	@Override

@@ -31,7 +31,7 @@ public class MovieController {
 	private MovieService movieService;
 
 	
-	
+	/*
 	@PostConstruct
 	@Transactional
 	public void init() {
@@ -58,19 +58,7 @@ public class MovieController {
 
 		movieService.getAllMovies();
 		
-		
-		// test remplacement des mauvais mots
-		String text = "tu es un connard.";
-		// renvoie le texte avec remplacement des bad_words
-		String returnedText;
-		try {
-			returnedText = movieService.badWordsFunction(text);
-		    System.out.println(returnedText);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	}*/
 	
 	
 	// fonction afficher les fims
@@ -85,57 +73,6 @@ public class MovieController {
 	public Optional<Movie> getMovieById(@PathVariable("id") int id) {
 		return movieService.getMovieById(id);
 	}
-	
-	
-	// ------------------------ comments of movies -----------------------------
-	@GetMapping("/rest/comments")
-	public List<MovieComments> getAllComments() {
-		return movieService.getAllComments();
-	}
-	
-	@GetMapping("/rest/comments/movie/{id}")
-	public List<MovieComments> getCommentsByMovieId(@PathVariable("id") int movieId) {
-		return movieService.getCommentsByMovieId(movieId);
-	}
-	
-	@GetMapping("/rest/comments/{id}")
-	public MovieComments getCommentsById(@PathVariable("id") int id) {
-		return movieService.getCommentsById(id);
-	}
-	
-	@PutMapping("/rest/comments/{movie_id}")
-	public void postCommentsByMovie(
-			@PathVariable("movie_id") int id,
-			@RequestBody Movie movie
-			) {
-		movieService.postCommentsByMovie(id, movie);
-	}
-	
-	//post comment not associated to a movie
-	@PostMapping("/rest/comments")
-	public MovieComments postComments(@RequestBody MovieComments movieComment) {
-		movieService.addComment(movieComment);
-		System.out.println(movieComment);
-		return movieComment;
-	}
-	
-	// methode pour filter les mauvais mots à partir d'une liste		
-	
-	String text = "tu es un connard.";
-	
-	// renvoie le texte avec remplacement des bad_words
-	public void badWordsFunction(String text) throws FileNotFoundException {
-		String returnedText;
-		try {
-			returnedText = movieService.badWordsFunction(text);
-		    System.out.println(returnedText);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
 	
 	
 	@PostMapping("/rest")
@@ -174,6 +111,84 @@ public class MovieController {
 //		return (Movie) movieService.getAllMovies();
 //	}
 
+	
+	
+	// ------------------------ comments of movies -----------------------------
+	
+	/**
+	 * function getAllComments :
+	 * @return movieService.getAllComments();
+	 */
+	@GetMapping("/rest/comments")
+	public List<MovieComments> getAllComments() {
+		return movieService.getAllComments();
+	}
+	
+	/**
+	 * function getCommentsByMovieId :
+	 * @param movieId (id of the movie you want to get comments)
+	 * @return movieService.getCommentsByMovieId(movieId);
+	 */
+	@GetMapping("/rest/comments/movie/{id}")
+	public List<MovieComments> getCommentsByMovieId(@PathVariable("id") int movieId) {
+		return movieService.getCommentsByMovieId(movieId);
+	}
+	
+	/**
+	 * function getCommentsById :
+	 * @param id (id of the comment)
+	 * @return movieService.getCommentsById(id);
+	 */
+	@GetMapping("/rest/comments/{id}")
+	public MovieComments getCommentsById(@PathVariable("id") int id) {
+		return movieService.getCommentsById(id);
+	}
+	
+	/**
+	 * function postCommentsByMovie :
+	 * @param id (id of the movie you want to add a comment)
+	 * @param movie (movie you update with a new comment)
+	 */
+	@PutMapping("/rest/comments/{movie_id}")
+	public void postCommentsByMovie(
+			@PathVariable("movie_id") int id,
+			@RequestBody Movie movie
+			) {
+		movieService.postCommentsByMovie(id, movie);
+	}
+	
+	//post comment not associated to a movie
+	/**
+	 * function postComments :
+	 * @param movieComment (comment you want to save in bdd)
+	 * @return movieComment
+	 */
+	@PostMapping("/rest/comments")
+	public MovieComments postComments(@RequestBody MovieComments movieComment) {
+		movieService.addComment(movieComment);
+		System.out.println(movieComment);
+		return movieComment;
+	}
+	
+	// ------------------------ bad words filtering -----------------------------
+
+	// methode pour filter les mauvais mots à partir d'une liste		
+	String text = "tu es un connard.";
+	/**
+	 * function badWordsFunction :
+	 * @param text (text you want to identify badwords and replace them)
+	 * @throws FileNotFoundException (if you on't find the file of badwords)
+	 */
+	// renvoie le texte avec remplacement des bad_words
+	public void badWordsFunction(String text) throws FileNotFoundException {
+		String returnedText;
+		try {
+			returnedText = movieService.badWordsFunction(text);
+		    System.out.println(returnedText);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	
 
 	

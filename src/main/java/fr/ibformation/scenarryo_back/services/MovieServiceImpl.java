@@ -21,25 +21,27 @@ import fr.ibformation.scenarryo_back.dao.MovieDAO;
 @Service
 public class MovieServiceImpl implements MovieService {
 
+	// -------------------------------------------------------------------------------
+	// ------------------ autowired ----------------------
 	@Autowired
 	MovieDAO movieDAO;
+	
 	@Autowired
 	MovieCommentsDAO movieCommentsDAO;
 	
-
-	// fonction d'affichage des films
+	// -------------------------------------------------------------------------------
+	// ------------------ Methods ----------------------
 	
+	// fonction d'affichage des films
 	@Override
 	public List<Movie> getAllMovies() {
-
 		return (List<Movie>) movieDAO.findAll();
-		
 	}
 
 	@Override
 	public Optional<Movie> getMovieById(int id) {
 		return movieDAO.findById(id);	
-		}
+	}
 
 	
 //	// fonction pour accèder à un film dans la base de donnée
@@ -49,24 +51,25 @@ public class MovieServiceImpl implements MovieService {
 //		return (List<Movie>) movieDAO.findAllByTitle(title);
 //	}
 
-	
-	
+		
 	// fonction d'ajout de film dans la bdd
-	
-		@Override
-		@Transactional
-		public void addMovie(Movie movie) {
-			movieDAO.save(movie);
-		}
+	@Override
+	@Transactional
+	public void addMovie(Movie movie) {
+		movieDAO.save(movie);
+	}
 		
 		
 	// Fonction supprimer un film
-		
 	@Override
 	public void deleteMovie(Movie movie) {
 		movieDAO.delete(movie);
 	}
 
+	
+	
+	// --------------------------------------------------------------------
+	// methods associated to comments
 	
 	@Override
 	public List<MovieComments> getAllComments() {
@@ -82,7 +85,6 @@ public class MovieServiceImpl implements MovieService {
 		} catch (Exception e) {
 			return new ArrayList<MovieComments>();	
 		}
-		
 	}
 
 	@Override
@@ -98,17 +100,16 @@ public class MovieServiceImpl implements MovieService {
         movieDAO.save(forUpdate);
 		
 	}
-	
-		
 
 	@Override
 	public void addComment(MovieComments movieComment) {
 		movieCommentsDAO.save(movieComment);
-		
 	}
 
-
-	// method to discriminate bad words
+	
+	// --------------------------------------------------------------------
+	// methods associated to bad words filtering
+	
 	public String badWordsFunction(String text) throws FileNotFoundException {
 		// import du fichier et conversion en un arraylist
 		
