@@ -203,12 +203,12 @@ public class DemoData {
 		
 		// -------------------------------------------------------------------------------
 		// test remplacement des mauvais mots
-		String text = "tu es un connard.";
+		String text = "tu es un connard .";
 		// renvoie le texte avec remplacement des bad_words
 		String returnedText;
 		try {
 			returnedText = movieService.badWordsFunction(text);
-		    System.out.println(returnedText);
+		   // System.out.println(returnedText);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

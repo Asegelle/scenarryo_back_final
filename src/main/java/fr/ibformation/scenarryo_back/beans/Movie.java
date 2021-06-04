@@ -12,9 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +27,9 @@ import lombok.Setter;
 //        property = "id")
 @Table
 public class Movie {
-
+	
+	// --------------------------------------------------------------------------------
+		// Variables
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // Auto incrémentation de l'ID
 	private int id;
@@ -52,8 +52,14 @@ public class Movie {
 	private List<MovieComments> filmComment = new ArrayList<>();
 	
 	
+
 	
 	/*public Movie(String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
+=======
+	// --------------------------------------------------------------------------------
+		// Constructors
+	public Movie(String title, String releaseDate, String ageLimited, String synopsis, String duration, String poster, String producer) {
+>>>>>>> feature/feature_comments
 		this.title = title;
 		this.releaseDate = releaseDate;
 		this.ageLimited = ageLimited;
@@ -130,6 +136,8 @@ public class Movie {
 	}
 	
 	
+	// --------------------------------------------------------------------------------
+		// ToString
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", releaseDate=" + releaseDate + ", ageLimited=" + ageLimited
