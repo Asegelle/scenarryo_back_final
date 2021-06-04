@@ -14,13 +14,13 @@ public class FilmShowTests {
 	@Autowired
 	FilmShowService showService;
 	
-	@Test
-	@Transactional
-	void contextLoads() {
-		FilmShow show = showService.getById(33);
-		System.out.println("testttttttttttttttttttttttttttttttttttttttttttttttttttt");
-		System.out.println(show);
-		// showService.getBookedSeatsByShow(32).forEach(System.out::println);
-	}
+//	@Test
+//	@Transactional
+//	void contextLoads() {
+//		FilmShow show = showService.getById(33);
+//		System.out.println("testttttttttttttttttttttttttttttttttttttttttttttttttttt");
+//		System.out.println(show);
+//		// showService.getBookedSeatsByShow(32).forEach(System.out::println);
+//	}
 
 }
