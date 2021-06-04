@@ -10,19 +10,34 @@ import fr.ibformation.scenarryo_back.beans.MovieComments;
 
 public interface MovieService {
 
+	/**
+	 * Function addMovie
+	 * @param movie
+	 */
 	public void addMovie(Movie movie); 
 	
+	/**
+	 * Function getAllMovies()
+	 * @return List<Movie>
+	 */
 	public List<Movie> getAllMovies();
 
-
+	/**
+	 * Function getMovieById
+	 * @param id
+	 * @return List<Movie>
+	 */
 	public Optional<Movie> getMovieById(int id);
 
 	
-	// public List<Movie> getMoviesByTitle(String title);
-	
+	/**
+	 * Function deleteMovie()
+	 * @Param movie
+	 */
 	public void deleteMovie(Movie movie);
 	
-	// --------------------------------------------------------------------
+	
+	// ----------------------------------------------------------------------------------------------
 	// methods associated to comments
 	
 	/**

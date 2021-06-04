@@ -1,11 +1,9 @@
 package fr.ibformation.scenarryo_back.services;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
 
 import javax.transaction.Transactional;
 
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import fr.ibformation.scenarryo_back.beans.Movie;
 import fr.ibformation.scenarryo_back.beans.MovieComments;
-import fr.ibformation.scenarryo_back.beans.Schedule;
 import fr.ibformation.scenarryo_back.dao.MovieCommentsDAO;
 import fr.ibformation.scenarryo_back.dao.MovieDAO;
 
@@ -32,7 +29,6 @@ public class MovieServiceImpl implements MovieService {
 	// -------------------------------------------------------------------------------
 	// ------------------ Methods ----------------------
 	
-	// fonction d'affichage des films
 	@Override
 	public List<Movie> getAllMovies() {
 		return (List<Movie>) movieDAO.findAll();
@@ -43,24 +39,12 @@ public class MovieServiceImpl implements MovieService {
 		return movieDAO.findById(id);	
 	}
 
-	
-//	// fonction pour accèder à un film dans la base de donnée
-//	@Override
-//	public List<Movie> getMoviesByTitle(String title) {
-//		
-//		return (List<Movie>) movieDAO.findAllByTitle(title);
-//	}
-
-		
-	// fonction d'ajout de film dans la bdd
 	@Override
 	@Transactional
 	public void addMovie(Movie movie) {
 		movieDAO.save(movie);
 	}
 		
-		
-	// Fonction supprimer un film
 	@Override
 	public void deleteMovie(Movie movie) {
 		movieDAO.delete(movie);
@@ -111,7 +95,7 @@ public class MovieServiceImpl implements MovieService {
 	// methods associated to bad words filtering
 	
 	public String badWordsFunction(String text) throws FileNotFoundException {
-		// import du fichier et conversion en un arraylist
+		// File import and conversion to an arrayList
 		
 		List<String> badWordsList = new ArrayList<String>();
 		badWordsList.add("batard");
