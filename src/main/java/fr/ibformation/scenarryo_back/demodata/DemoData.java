@@ -103,29 +103,29 @@ public class DemoData {
 		
 		
 		// add schedules in database
-		Schedule schedule1 = new Schedule(LocalDate.of(2021, 6, 03), "10:00", "12:00" );
-		Schedule schedule2 = new Schedule(LocalDate.of(2021, 6, 03), "12:00", "14:00" );
-		Schedule schedule3 = new Schedule(LocalDate.of(2021, 6, 04), "14:00", "16:00" );
-		Schedule schedule4 = new Schedule(LocalDate.of(2021, 6, 03), "10:00", "12:00" );
-		Schedule schedule5 = new Schedule(LocalDate.of(2021, 6, 04), "14:00", "16:00" );
+		Schedule schedule1 = new Schedule(LocalDate.of(2021, 6, 07), "10:00", "12:00" );
+		Schedule schedule2 = new Schedule(LocalDate.of(2021, 6, 07), "12:00", "14:00" );
+		Schedule schedule3 = new Schedule(LocalDate.of(2021, 6, 8), "14:00", "16:00" );
+		Schedule schedule4 = new Schedule(LocalDate.of(2021, 6, 8), "10:00", "12:00" );
+		Schedule schedule5 = new Schedule(LocalDate.of(2021, 6, 9), "14:00", "16:00" );
 		scheduleDAO.save(schedule1);
 		scheduleDAO.save(schedule2);
 		scheduleDAO.save(schedule3);
 		scheduleDAO.save(schedule4);
 		scheduleDAO.save(schedule5);
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 03), "20:00", "22:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 03), "10:00", "12:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "12:00", "14:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "14:00", "16:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 04), "16:00", "18:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 28), "18:00", "20:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 29), "20:00", "22:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "10:00", "12:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "12:00", "14:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "14:00", "16:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "16:00", "18:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "18:00", "20:00" ));
-		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 30), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 7), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 7), "10:00", "12:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 7), "12:00", "14:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 7), "14:00", "16:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 8), "16:00", "18:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 8), "18:00", "20:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 8), "20:00", "22:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 9), "10:00", "12:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 9), "12:00", "14:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 9), "14:00", "16:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 11), "16:00", "18:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 12), "18:00", "20:00" ));
+		scheduleDAO.save(new Schedule (LocalDate.of(2021, 6, 12), "20:00", "22:00" ));
 		
 		
 		// add movies in database
