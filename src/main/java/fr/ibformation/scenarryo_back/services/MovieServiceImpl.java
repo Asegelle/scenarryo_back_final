@@ -60,6 +60,7 @@ public class MovieServiceImpl implements MovieService {
 		return (List<MovieComments>) movieCommentsDAO.findAll();
 	}
 	
+	/*
 	@Override
 	public List<MovieComments> getCommentsByMovieId(int movieId) {
 		Movie movie;
@@ -69,7 +70,31 @@ public class MovieServiceImpl implements MovieService {
 		} catch (Exception e) {
 			return new ArrayList<MovieComments>();	
 		}
+	}*/
+	
+	
+	@Override
+	public List<MovieComments> getCommentsByMovieId(int movieId) {
+
+		List<MovieComments> beforeFiltering = movieCommentsDAO.findfilmCommentById(movieId);
+		
+		for (MovieComments movieComment : beforeFiltering) {
+			try {
+				String test = badWordsFunction(movieComment.getComment());
+				System.out.println(test);
+				movieComment.setComment(test);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		List<MovieComments> AfterFiltering = movieCommentsDAO.findfilmCommentById(movieId);
+
+		
+		return AfterFiltering;
+
 	}
+	
 
 	@Override
 	public MovieComments getCommentsById(int id) {

@@ -155,7 +155,7 @@ public class DemoData {
 		
 		MovieComments c1 = new MovieComments("J'adore ce film tellement bien !!");
 		MovieComments c2 = new MovieComments("pas super, les acteurs manquent de charisme, les effets spéciaux sont moyens, on sent le manque de budget, ... ca passe pour un nanar mais pas plus");
-		MovieComments c3 = new MovieComments("spoiler : Voldemort meurt a la fin : Spoiler");
+		MovieComments c3 = new MovieComments("spoiler : Voldemort le batard meurt a la fin : Spoiler");
 		movieCommentsDAO.save(c1);
 		movieCommentsDAO.save(c2);
 		movieCommentsDAO.save(c3);

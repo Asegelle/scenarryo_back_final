@@ -135,7 +135,7 @@ public class MovieController {
 	 * @param id (id of the movie you want to add a comment)
 	 * @param movie (movie you update with a new comment)
 	 */
-	@PutMapping("/rest/comments/{movie_id}")
+	@PostMapping("/rest/comments/{movie_id}")
 	public void postCommentsByMovie(
 			@PathVariable("movie_id") int id,
 			@RequestBody Movie movie
