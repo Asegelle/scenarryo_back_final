@@ -71,6 +71,8 @@ public class MovieController {
 	@Transactional // A ajouter lorsqu'on modifie qqc en BDD
 	public List<Movie> addMovie(@RequestBody Movie movie) {		
 		movieService.addMovie(movie);
+		System.out.println("///////////////////");
+		System.out.println(movie);
 		return getAllMovies();
 	}
 		
