@@ -128,6 +128,8 @@ public class MovieServiceImpl implements MovieService {
 		badWordsList.add("salope");
 		badWordsList.add("pute");
 		badWordsList.add("enculer");
+		badWordsList.add("pleutre");
+
 		
 		/*
 	    File txt = new File("file/bad_words.txt");
